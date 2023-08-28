@@ -14,6 +14,7 @@ export const AddTodoComp = ({AddTodo}:IAddTodoComp) => {
 
     const handleClick=()=>{
       setText("")
+      AddTodo(text)
     }
 
   return (

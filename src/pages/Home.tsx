@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useEffect } from 'react';
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { AddTodoComp } from './Components/AddTodoComp';
+import { AddTodoComp } from '../Components/AddTodoComp';
 
 interface TodoType {
   todo:string;
@@ -19,8 +19,6 @@ export const Home = () => {
   const [todos,setTodos]=useState<TodoType[]>([])
 
   const url:string = import.meta.env.VITE_BASE_URL
-
-  console.log(url)
   
   const getTodos=async()=>{
 
@@ -30,12 +28,12 @@ export const Home = () => {
       //*dataya yüklenecek olan veriyi belirtiyoruz.
       const {data} = await axios<TodoType[]>(url)
 
-      console.log(data)
-
       setTodos(data)
 
+      console.log(data)
+
     } catch (error) {
-      console.log('hataaaa')
+      console.log(error)
     }
   }
 
@@ -69,7 +67,7 @@ export const Home = () => {
     <Typography color='error' align='center'>
     Todo App with TypeScript
     </Typography> 
-    <AddTodoComp/>
+    <AddTodoComp AddTodo={addTodo}/>
     </Container>
 
 
